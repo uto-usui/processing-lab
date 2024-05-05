@@ -5,21 +5,23 @@ void setup() {
 }
 
 void draw() {
-  int numPatterns = 5; // 生成するパターンの数
+  int numPatterns = 10; // 生成するパターンの数を10に設定
   float patternWidth = width / (2 * numPatterns); // 各パターンの幅
-  
+
   stroke(0); // borderの色を黒に設定
   strokeWeight(2); // borderの太さを2に設定
-  
+
   for (int i = 0; i < numPatterns; i++) {
-    // 外側の青色部分
-    fill(0, 0, 255); // 青色
-    float outerSize = width - i * 2 * patternWidth; // 外側の正方形のサイズ
-    rect(i * patternWidth, i * patternWidth, outerSize, outerSize);
-    
-    // 内側の緑色部分
-    fill(0, 255, 0); // 緑色
-    float innerSize = outerSize - patternWidth; // 内側の正方形のサイズ
-    rect((i * patternWidth) + patternWidth/2, (i * patternWidth) + patternWidth/2, innerSize, innerSize);
+    float size = width - i * 2 * patternWidth; // 各正方形のサイズ
+
+    // 奇数と偶数のインデックスで色を交互に設定
+    if (i % 2 == 0) {
+      fill(0, 0, 255); // 奇数インデックスでは青色
+    } else {
+      fill(0, 255, 0); // 偶数インデックスでは緑色
+    }
+
+    // 単一のrect()で正方形を描画
+    rect(i * patternWidth, i * patternWidth, size, size);
   }
 }
