@@ -6,6 +6,8 @@ void setup() {
 void draw() {
   background(255);  // 背景色を白に設定
 
+   noStroke(); // 郭線線を消す
+
   // 黒のストライプ
   fill(0);  // 塗り色を黒に設定
   rect(0, 0, width/3, height);  // 左側のストライプを描画
